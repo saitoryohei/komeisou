@@ -15,16 +15,26 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
-      # ここを追加しました！Node.jsのバージョンを22に指定します
+
+      # 1. ここで「絶対に22を使え」と強制します
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: 'npm'
 
-      - name: Install, build, and upload with Astro
-        uses: withastro/action@v3
+      # 2. お節介ツールを使わず、直接コマンドを叩きます
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Astro
+        run: npm run build
+
+      # 3. 出来上がったものを公開用にアップロード
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
 
   deploy:
     needs: build
