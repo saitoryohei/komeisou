@@ -1,0 +1,64 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="湖明荘オートキャンプ場 | 山中湖の静寂を愉しむ">
+	<main>
+		<section class="hero">
+			<div class="overlay"></div>
+			<div class="content">
+				<h1>湖明荘</h1>
+				<p class="subtitle">山中湖、ひっそりと佇む大人の隠れ家</p>
+			</div>
+		</section>
+
+		<section class="intro">
+			<p>
+				目の前に広がるのは、静かな湖面と雄大な富士。<br>
+				ここは、都会の喧騒を忘れ、<br>
+				ただ風の音と焚き火の爆ぜる音に耳を傾ける場所。
+			</p>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.hero {
+		height: 80vh; /* 画面の8割をダイナミックに使う */
+		background: url('/hero-bg.jpg') center/cover no-repeat; /* 後で写真を入れます */
+		background-color: #2c3e50; /* 写真がない間の仮の色 */
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		color: white;
+	}
+	.overlay {
+		position: absolute;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.3); /* 写真を少し暗くして文字を見やすく */
+	}
+	.content {
+		position: relative;
+		text-align: center;
+		z-index: 1;
+	}
+	h1 {
+		font-size: 4rem;
+		margin: 0;
+		letter-spacing: 0.2em;
+		font-weight: 300;
+	}
+	.subtitle {
+		font-size: 1.2rem;
+		margin-top: 1rem;
+		opacity: 0.9;
+	}
+	.intro {
+		padding: 8rem 2rem;
+		text-align: center;
+		line-height: 2;
+		letter-spacing: 0.1em;
+	}
+</style>
